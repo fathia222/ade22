@@ -1,0 +1,231 @@
+:root {
+  --primary-color: #1e88e5;
+  --secondary-color: #4caf50;
+  --accent-color: #ff9800;
+  --text-color: #2c3e50;
+  --light-bg: #f8f9fa;
+  --white: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --h1-color: black;
+}
+
+[data-theme="dark"] {
+  --primary-color: #64b5f6;
+  --secondary-color: #81c784;
+  --accent-color: #ffb74d;
+  --text-color: #e0e0e0;
+  --light-bg: #1a237e;
+  --white: #121858;
+  --nav-bg: rgba(26, 35, 126, 0.95);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--white);
+  transition: var(--transition);
+}
+
+/* Header & Navigation */
+header {
+  background-color: black;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: var(--transition);
+}
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+  gap: 0.5rem;
+}
+.logo i {
+  color: var(--secondary-color);
+}
+/* cancelled out Navigation toggle */
+.nav-toggle {
+  display: none;
+  gap: 1rem;
+  align-items: center;
+}
+#theme-toggle,
+#menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+#theme-toggle:hover,
+#menu-toggle:hover {
+  color: var(--secondary-color);
+}
+#menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+}
+#menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--primary-color);
+  transition: var(--transition);
+}
+#menu-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+#menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+#menu-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.nav-lists {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-lists a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  display: flex;
+}
+.nav-lists a:hover {
+  color: var(--primary-color);
+  /* background-color: rgba(30, 136, 229.1); */
+}
+/* main */
+main {
+  margin-top: 4rem;
+}
+section {
+  padding: 4rem 2rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--h1-color);
+  font-weight: bold;
+  /* font-size: x-large; */
+}
+h1 {
+  font-size: xx-large;
+}
+/* HERO SECTION */
+#hero {
+  background: linear-gradient(rgba(179, 204, 225, 0.9), rgba(5, 97, 236, 0.9)),
+    url("https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  overflow: hidden;
+}
+#hero::before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+}
+/* About Section */
+#about {
+  background-color: var(--white);
+  /* background-color: gray; */
+  position: relative;
+  padding: 6rem 2rem;
+}
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.about-container::before {
+  content: " ";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: var(--secondary-color);
+  opacity: 0.3;
+  border-radius: 50%;
+  top: -20px;
+  left: -20px;
+  z-index: -1;
+}
+#programs {
+  background-color: var(--light-bg);
+  position: relative;
+  padding: 6rem 2rem;
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+.programs-card {
+  background: var(--light-bg);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.programs-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
